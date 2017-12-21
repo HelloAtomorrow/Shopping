@@ -3,6 +3,7 @@ package cn.uestc.tmail.service.impl;
 import cn.uestc.tmail.mapper.CategoryMapper;
 import cn.uestc.tmail.pojo.Category;
 import cn.uestc.tmail.service.CategoryService;
+import cn.uestc.tmail.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,12 @@ public class CategoryServiceImpl implements CategoryService{
     CategoryMapper categoryMapper;
 
     @Override
-    public List<Category> list() {
-        return categoryMapper.list();
+    public List<Category> list(Page page) {
+        return categoryMapper.list(page);
+    }
+
+    @Override
+    public Integer total() {
+        return categoryMapper.total();
     }
 }

@@ -5,5 +5,11 @@
 <mapper namespace="cn.uestc.tmail.mapper.CategoryMapper">
     <select id="list" resultType="Category">
         SELECT * FROM category ORDER BY id DESC
+        <if test="currentLocation != null and eachPageDataNumber != null">
+            LIMIT #{currentLocation}, #{eachPageDataNumber}
+        </if>
+    </select>
+    <select id="total" resultType="Integer">
+        SELECT COUNT(*) FROM CATEGORY
     </select>
 </mapper>

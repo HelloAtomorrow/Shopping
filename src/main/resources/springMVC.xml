@@ -25,6 +25,6 @@
     </bean>
 
     <!--对上传文件解析-->
-    <bean id="mutipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 
 </beans>

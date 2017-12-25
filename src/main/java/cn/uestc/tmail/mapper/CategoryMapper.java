@@ -9,7 +9,15 @@ import java.util.List;
 @Repository
 public interface CategoryMapper {
 
-    public List<Category> list(Page page);
+    List<Category> list(Page page);
 
-    public Integer total();
+    Integer total();
+
+    void add(Category category);
+
+    void delete(Integer id);
+
+    Category get(Integer id);
+
+    void update(Category category);
 }

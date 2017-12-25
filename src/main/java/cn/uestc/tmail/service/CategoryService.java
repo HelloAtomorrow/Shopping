@@ -10,4 +10,12 @@ public interface CategoryService {
     List<Category> list(Page page);
 
     Integer total();
+
+    void add(Category category);
+
+    void delete(Integer id);
+
+    Category get(Integer id);
+
+    void update(Category category);
 }

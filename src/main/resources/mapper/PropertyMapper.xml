@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.uestc.tmail.mapper.PropertyMapper">
+    <select id="list" resultType="Property">
+        SELECT * FROM property WHERE cid = #{cid} ORDER BY id DESC
+    </select>
+    <select id="get" resultType="Property">
+        SELECT * FROM property WHERE id = #{id}
+    </select>
+    <insert id="add" parameterType="Property">
+        INSERT INTO property (cid, name) VALUES (#{cid}, #{name})
+    </insert>
+    <delete id="delete">
+        DELETE FROM property WHERE id = #{id}
+    </delete>
+    <update id="update" parameterType="Property">
+        UPDATE property SET name = #{name} WHERE id = #{id}
+    </update>
+</mapper>

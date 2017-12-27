@@ -5,6 +5,8 @@ import cn.uestc.tmail.util.ImageUtil;
 import cn.uestc.tmail.pojo.UploadedImageFile;
 import cn.uestc.tmail.service.CategoryService;
 import cn.uestc.tmail.util.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,8 +28,9 @@ public class CategoryController {
 
     @RequestMapping("/admin_category_list")
     public String list(Model model, Page page) {
-        List<Category> categories = categoryService.list(page);
-        Integer total = categoryService.total();
+        PageHelper.offsetPage(page.getCurrentLocation(), page.getEachPageDataNumber());
+        List<Category> categories = categoryService.list();
+        Integer total = (int) new PageInfo<>(categories).getTotal();
         page.setTotalDataNumber(total);
         model.addAttribute("categories", categories);
         model.addAttribute("page", page);
